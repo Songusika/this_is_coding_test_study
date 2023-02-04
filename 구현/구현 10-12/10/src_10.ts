@@ -39,6 +39,20 @@ class UnLocker{
             }
         })
     }
+
+    private rotateKey():void{
+        let squareLength = this.key.length;
+
+        let rotateKey:number[][] = Array.from(Array(squareLength), () => new Array(squareLength))
+
+        for(let row = 0; row <squareLength; row++){
+            for(let col = 0; col < squareLength; col++){
+                rotateKey[col][squareLength - row - 1] = this.key[row][col];
+            }
+        }
+        
+        this.key = rotateKey;
+    }
 }
 
 let q10_t1:UnLocker = new UnLocker([[0,0,0], [1,0,0], [0,1,1]], [[1,1,1,], [1,1,0], [1,0,1]]);
